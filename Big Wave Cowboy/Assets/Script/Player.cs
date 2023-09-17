@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public float pVelocity;
     public int life, maxLife;
 
+
     private Vector2 playerVelocity;
 
     
@@ -37,12 +38,11 @@ public class Player : MonoBehaviour
         if (life <= 0)
         {
             Destroy(this.gameObject);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.tag == "Enemy")
         {
             life -= 10;
         }

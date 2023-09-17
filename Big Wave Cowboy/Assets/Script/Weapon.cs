@@ -9,6 +9,8 @@ public class Weapon : MonoBehaviour
     public Transform BulletOut1;
     public Transform BulletOut2;
     public float timeBetShoot;
+    public AudioSource bulletSound;
+    public AudioClip bulletClip;
 
     bool readyToShoot;
 
@@ -41,6 +43,7 @@ public class Weapon : MonoBehaviour
 
         if(Input.GetKey(KeyCode.Mouse0) && readyToShoot)
         {
+            bulletSound.PlayOneShot(bulletClip);
             readyToShoot = false;
             Instantiate(bullets, BulletOut1.transform.position, Quaternion.identity);
             Instantiate(bullets, BulletOut2.transform.position, Quaternion.identity);
