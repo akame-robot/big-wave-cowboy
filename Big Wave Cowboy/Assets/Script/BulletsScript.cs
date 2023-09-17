@@ -29,4 +29,12 @@ public class BulletsScript : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, bulletFollow, velocity * Time.deltaTime);
         Destroy(gameObject, 5);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Enemy")
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
