@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     {
         PlayerWalk();
         PLayerLife();
+        PlayerOffCamera();
     }
 
     public void PlayerWalk()
@@ -45,6 +46,26 @@ public class Player : MonoBehaviour
         if (collision.tag == "Enemy")
         {
             life -= 10;
+        }
+    }
+
+    void PlayerOffCamera()
+    {
+        if (transform.position.x >= 7.46f)
+        {
+            transform.position = new Vector3(7.46f, transform.position.y, transform.position.z);
+        }
+        if (transform.position.x <= -7.46f)
+        {
+            transform.position = new Vector3(-7.46f, transform.position.y, transform.position.z);
+        }
+        if (transform.position.y >= 4.5f)
+        {
+            transform.position = new Vector3(transform.position.x, 4.5f, transform.position.z);
+        }
+        if (transform.position.y <= -4.5f)
+        {
+            transform.position = new Vector3(transform.position.x, -4.5f, transform.position.z);
         }
     }
 }
