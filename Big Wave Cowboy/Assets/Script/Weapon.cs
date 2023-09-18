@@ -39,8 +39,6 @@ public class Weapon : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        Debug.Log($"{screenPos.x},{screenPos.y} // {cameraPos.x},{cameraPos.y}");
-
         if(Input.GetKey(KeyCode.Mouse0) && readyToShoot)
         {
             bulletSound.PlayOneShot(bulletClip);

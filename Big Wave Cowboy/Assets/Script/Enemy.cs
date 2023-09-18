@@ -8,13 +8,17 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb;
 
     public float enemyVelocity;
-    public int life, maxLife;
+    public int life;
+    public int maxLife = 100;
+    private GameController enemyController;
+
     // Start is called before the first frame update
     void Start()
     {
         life = maxLife;
         rb = GetComponent<Rigidbody2D>();
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+        enemyController = GameObject.FindObjectOfType<GameController>();
     }
 
     // Update is called once per frame
@@ -34,9 +38,17 @@ public class Enemy : MonoBehaviour
 
     void EnemyLife()
     {
-        if(life <= 0)
+        if (life <= 0)
         {
             Destroy(this.gameObject);
         }
     }
+    private void OnDestroy()
+    {
+        if (enemyController != null)
+        {
+            enemyController.EnemyDeafeated();
+        }
+    }
+
 }
